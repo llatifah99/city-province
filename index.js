@@ -1,15 +1,16 @@
-// import
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
+
 app.use(cors());
 
 app.get("/province", async (req, res) => {
   try {
-    const apiKey = "f69624e6337923046e8530fab4f2e814";
+    const apiKey = process.env.API_KEY;
     const url = "https://api.rajaongkir.com/starter/province";
     const response = await axios.get(url, {
       headers: {
